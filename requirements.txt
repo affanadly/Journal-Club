@@ -1,0 +1,4 @@
+bibtexparser
+PyQt6
+pyqtdarktheme
+pyinstaller
