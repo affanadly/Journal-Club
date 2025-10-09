@@ -350,7 +350,8 @@ class LaTeXCompiler(QtC.QThread):
                 cwd=os.path.join(ROOT, 'latex'),
                 stdout=subprocess.PIPE,
                 stderr=subprocess.PIPE,
-                text=True
+                text=True, 
+                creationflags=CREATE_NO_WINDOW
             )
             stdout, stderr = process.communicate()
             self.progress.emit(i + 1)
@@ -370,6 +371,8 @@ if __name__ == '__main__':
     compile the poster using LuaLaTeX and Biber.
     """
     ROOT = os.path.abspath(os.path.dirname(__file__))
+    CREATE_NO_WINDOW = 0x08000000
+    
     app = QtC.QCoreApplication.instance()
     if app is None:
         app = QtW.QApplication(sys.argv)
